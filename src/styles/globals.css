@@ -1,0 +1,116 @@
+@import 'tailwindcss';
+
+/*
+ * NOVA Estates design tokens.
+ * Warm limestone surfaces, graphite ink, a single bronze accent.
+ * Sharp geometry and hairline rules — no gradients, no heavy radii.
+ */
+@theme {
+  /* Surfaces */
+  --color-paper: #f3efe8;
+  --color-linen: #ebe5da;
+  --color-sand: #dcd3c4;
+  --color-stone: #c4b8a5;
+  --color-taupe: #8a8174;
+  --color-umber: #5f584e;
+
+  /* Ink */
+  --color-ink: #1b1a17;
+  --color-graphite: #2b2925;
+  --color-slate: #45413a;
+
+  /* Accent */
+  --color-bronze: #9a7a4f;
+  --color-bronze-light: #b08d5b;
+  --color-bronze-deep: #7a5f3b;
+
+  /* Status */
+  --color-sage: #66705e;
+  --color-clay: #9b5b43;
+
+  /* Typography */
+  --font-display: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
+  --font-sans: 'Manrope', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --text-display-xl: clamp(3.5rem, 8vw, 8.5rem);
+  --text-display-xl--line-height: 0.92;
+  --text-display-xl--letter-spacing: -0.02em;
+  --text-display-lg: clamp(2.75rem, 5.5vw, 5.5rem);
+  --text-display-lg--line-height: 1;
+  --text-display-lg--letter-spacing: -0.015em;
+  --text-display-md: clamp(2.125rem, 3.8vw, 3.75rem);
+  --text-display-md--line-height: 1.05;
+  --text-display-md--letter-spacing: -0.01em;
+  --text-display-sm: clamp(1.625rem, 2.4vw, 2.375rem);
+  --text-display-sm--line-height: 1.12;
+  --text-display-xs: clamp(1.375rem, 1.6vw, 1.625rem);
+  --text-display-xs--line-height: 1.2;
+  --text-eyebrow: 0.6875rem;
+  --text-eyebrow--line-height: 1.4;
+
+  --tracking-eyebrow: 0.28em;
+  --tracking-label: 0.16em;
+
+  /* Motion */
+  --ease-architectural: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-settle: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Layout */
+  --container-content: 82.5rem;
+  --container-wide: 100rem;
+  --container-narrow: 46rem;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-paper font-sans text-ink antialiased;
+    font-feature-settings: 'ss01', 'kern';
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display font-normal text-balance;
+  }
+
+  p {
+    @apply text-pretty;
+  }
+
+  ::selection {
+    @apply bg-bronze text-paper;
+  }
+
+  :focus-visible {
+    @apply outline outline-1 outline-offset-4 outline-bronze;
+  }
+
+  img {
+    @apply max-w-full;
+  }
+}
+
+@utility eyebrow {
+  @apply font-sans text-eyebrow font-medium tracking-eyebrow uppercase;
+}
+
+@utility label {
+  @apply font-sans text-xs font-medium tracking-label uppercase;
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums lining-nums;
+}
