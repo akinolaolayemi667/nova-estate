@@ -1,4 +1,18 @@
-import { Compass, MapPin, Sparkles, UserRound, type LucideIcon } from 'lucide-react';
+import {
+  Compass,
+  DoorOpen,
+  Handshake,
+  KeyRound,
+  Layers,
+  ListChecks,
+  MapPin,
+  MessagesSquare,
+  Search,
+  Sparkles,
+  UserRound,
+  UsersRound,
+  type LucideIcon,
+} from 'lucide-react';
 import { unsplash } from '@/lib/images';
 import { routes } from '@/lib/routes';
 import type { GalleryImage, Property } from '@/lib/types';
@@ -144,4 +158,83 @@ export const whyNovaContent = {
       icon: Compass,
     },
   ] satisfies Principle[],
+};
+
+export interface ProcessStep {
+  title: string;
+  description: string;
+  icon: LucideIcon;
+}
+
+export interface ProcessTrack {
+  id: string;
+  label: string;
+  steps: ProcessStep[];
+}
+
+export const processContent = {
+  eyebrow: 'Buying & selling',
+  title: ['A Clearer Path', 'From Search to Closing'],
+  description:
+    "Whether you're finding your next home or preparing to sell, we guide each stage with clarity and attention to detail.",
+  tabsLabel: 'Choose a process',
+  tracks: [
+    {
+      id: 'buying',
+      label: 'Buying a Property',
+      steps: [
+        {
+          title: 'Discover',
+          description: "Tell us what you're looking for and explore properties that fit your criteria.",
+          icon: Search,
+        },
+        {
+          title: 'Shortlist',
+          description: 'Compare selected properties, locations and features with guidance from our team.',
+          icon: ListChecks,
+        },
+        {
+          title: 'View',
+          description: 'Arrange private viewings and experience the spaces in person.',
+          icon: DoorOpen,
+        },
+        {
+          title: 'Complete',
+          description: 'Move through the final stages with clear communication and coordinated support.',
+          icon: KeyRound,
+        },
+      ],
+    },
+    {
+      id: 'selling',
+      label: 'Selling a Property',
+      steps: [
+        {
+          title: 'Consultation',
+          description: 'Discuss your property, goals and preferred selling approach.',
+          icon: MessagesSquare,
+        },
+        {
+          title: 'Position',
+          description: 'Prepare the property presentation and establish a thoughtful market strategy.',
+          icon: Layers,
+        },
+        {
+          title: 'Market',
+          description: 'Present the property through appropriate channels and qualified buyer outreach.',
+          icon: UsersRound,
+        },
+        {
+          title: 'Close',
+          description: 'Coordinate the final stages and keep the process moving toward completion.',
+          icon: Handshake,
+        },
+      ],
+    },
+  ] satisfies ProcessTrack[],
+  cta: {
+    prompt: 'Ready to take the next step?',
+    label: 'Speak With NOVA Estates',
+    href: routes.consultation,
+  },
 };

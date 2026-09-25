@@ -1,4 +1,12 @@
-import { FeaturedProperties, Hero, Locations, PropertyCategories, PropertyShowcase, WhyNova } from '@/components/sections';
+import {
+  FeaturedProperties,
+  Hero,
+  Locations,
+  Process,
+  PropertyCategories,
+  PropertyShowcase,
+  WhyNova,
+} from '@/components/sections';
 
 export function HomePage() {
   return (
@@ -9,6 +17,7 @@ export function HomePage() {
       <Locations />
       <PropertyShowcase />
       <WhyNova />
+      <Process />
     </>
   );
 }
