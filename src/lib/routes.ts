@@ -8,6 +8,7 @@ export const routes = {
   home: path('/'),
   properties: path('/properties'),
   property: (slug: string) => path(`/properties/${slug}`),
+  propertyCategory: (id: string) => path(`/properties?category=${encodeURIComponent(id)}`),
   buy: path('/buy'),
   sell: path('/sell'),
   locations: path('/locations'),

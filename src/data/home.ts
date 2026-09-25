@@ -37,3 +37,11 @@ export const featuredPropertiesContent = {
     cta: { label: 'Arrange a Viewing', href: routes.consultation },
   },
 } as const;
+
+export const propertyCategoriesContent = {
+  eyebrow: 'Property categories',
+  title: 'Find the Right Kind of Space',
+  description:
+    'From city apartments to private residences, explore properties suited to different ways of living.',
+  cta: { label: 'Browse All Properties', href: routes.properties },
+} as const;
