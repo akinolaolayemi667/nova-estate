@@ -12,7 +12,7 @@ export const agents: Agent[] = [
     bio: 'Eleanor has advised private clients on prime London residences for over fifteen years.',
     specialties: ['Prime residential', 'Off-market acquisitions'],
     languages: ['English', 'French'],
-    locationIds: ['belgravia', 'cap-ferrat'],
+    locationIds: ['city-center', 'waterfront'],
     yearsOfExperience: 16,
   },
   {
@@ -25,7 +25,7 @@ export const agents: Agent[] = [
     bio: 'Marcus leads the investment desk, structuring portfolio acquisitions across three continents.',
     specialties: ['Investment property', 'New developments'],
     languages: ['English', 'Spanish'],
-    locationIds: ['tribeca', 'palm-jumeirah'],
+    locationIds: ['residences-district', 'west-end'],
     yearsOfExperience: 12,
   },
   {
@@ -38,7 +38,7 @@ export const agents: Agent[] = [
     bio: 'Inês specialises in heritage townhouses and restoration projects throughout Lisbon.',
     specialties: ['Heritage homes', 'Relocation'],
     languages: ['Portuguese', 'English', 'French'],
-    locationIds: ['lisbon'],
+    locationIds: ['north-hills'],
     yearsOfExperience: 9,
   },
   {
@@ -51,7 +51,7 @@ export const agents: Agent[] = [
     bio: 'Julian represents buyers and sellers of waterfront villas across the Gulf.',
     specialties: ['Waterfront villas', 'Property selling'],
     languages: ['English', 'Arabic'],
-    locationIds: ['palm-jumeirah'],
+    locationIds: ['waterfront'],
     yearsOfExperience: 11,
   },
 ];

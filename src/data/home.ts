@@ -45,3 +45,21 @@ export const propertyCategoriesContent = {
     'From city apartments to private residences, explore properties suited to different ways of living.',
   cta: { label: 'Browse All Properties', href: routes.properties },
 } as const;
+
+export const locationsContent = {
+  eyebrow: 'Locations',
+  title: 'Explore Distinctive Locations',
+  description:
+    'Discover neighborhoods selected for their architecture, lifestyle, connectivity and character.',
+  cta: { label: 'View All Locations', href: routes.locations },
+  featuredLabel: 'Featured location',
+  cardCta: 'Explore Properties',
+  map: {
+    eyebrow: 'Location index',
+    countLabel: 'Demo locations',
+    caption: 'Abstract illustration — not a geographic map',
+    note: 'Not to scale',
+  },
+  disclaimer:
+    'Locations shown are fictional neighborhoods created for this demonstration website and do not represent real areas.',
+} as const;

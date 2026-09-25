@@ -26,7 +26,7 @@ export const propertyStatusOptions: SelectOption<PropertyStatus | AnyOption>[] =
 
 export const locationOptions: SelectOption[] = [
   anyOption('All locations'),
-  ...locations.map((location) => ({ value: location.id, label: `${location.name}, ${location.city}` })),
+  ...locations.map((location) => ({ value: location.id, label: location.name })),
 ];
 
 export const sortOptions: SelectOption<PropertySort>[] = [

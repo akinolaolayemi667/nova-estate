@@ -13,6 +13,7 @@ export const routes = {
   sell: path('/sell'),
   locations: path('/locations'),
   location: (id: string) => path(`/locations/${id}`),
+  propertiesInLocation: (id: string) => path(`/properties?location=${encodeURIComponent(id)}`),
   about: path('/about'),
   insights: path('/insights'),
   agents: path('/agents'),

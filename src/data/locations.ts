@@ -1,54 +1,54 @@
 import { unsplash } from '@/lib/images';
+import { routes } from '@/lib/routes';
 import type { Location } from '@/lib/types';
 
+const location = (entry: Omit<Location, 'href'>): Location => ({
+  ...entry,
+  href: routes.propertiesInLocation(entry.id),
+});
+
+/**
+ * Fictional neighbourhoods for demonstration only — they do not describe real places.
+ * Display order matters: the first location takes the featured tile.
+ */
 export const locations: Location[] = [
-  {
-    id: 'belgravia',
-    name: 'Belgravia',
-    city: 'London',
-    country: 'United Kingdom',
-    description: 'Stucco terraces, garden squares and embassy-quiet streets in the heart of London.',
-    image: unsplash('photo-1600607687939-ce8a6c25118c'),
-    imageAlt: 'Light-filled living room with tall windows and neutral furnishings',
-  },
-  {
-    id: 'cap-ferrat',
-    name: 'Saint-Jean-Cap-Ferrat',
-    city: 'Côte d’Azur',
-    country: 'France',
-    description: 'A private peninsula of pine-shaded villas above the Mediterranean.',
-    image: unsplash('photo-1613490493576-7fde63acd811'),
-    imageAlt: 'White villa with an infinity pool at dusk',
-  },
-  {
-    id: 'tribeca',
-    name: 'Tribeca',
-    city: 'New York',
-    country: 'United States',
-    description: 'Cast-iron lofts and new-build residences on cobbled downtown streets.',
-    image: unsplash('photo-1545324418-cc1a3fa10c00'),
-    imageAlt: 'Modern residential tower with recessed balconies',
-  },
-  {
-    id: 'lisbon',
-    name: 'Príncipe Real',
-    city: 'Lisbon',
-    country: 'Portugal',
-    description: 'Tiled façades, hidden gardens and river light across the seven hills.',
-    image: unsplash('photo-1600047509807-ba8f99d2cdde'),
-    imageAlt: 'Contemporary townhouse façade with warm timber detailing',
-  },
-  {
-    id: 'palm-jumeirah',
-    name: 'Palm Jumeirah',
-    city: 'Dubai',
-    country: 'United Arab Emirates',
-    description: 'Beachfront frond villas with private moorings and skyline views.',
-    image: unsplash('photo-1600596542815-ffad4c1539a9'),
-    imageAlt: 'Modern villa with glass walls and a lit pool terrace',
-  },
+  location({
+    id: 'city-center',
+    name: 'City Center',
+    description: 'Contemporary living close to culture, dining and everyday conveniences.',
+    image: unsplash('photo-1486406146926-c627a92ad1ab', 2000),
+    marker: { x: 50, y: 46, labelSide: 'right' },
+  }),
+  location({
+    id: 'waterfront',
+    name: 'Waterfront District',
+    description: 'Private residences with open views and a slower pace of living.',
+    image: unsplash('photo-1439066615861-d1af74d74000'),
+    marker: { x: 68, y: 74, labelSide: 'left' },
+  }),
+  location({
+    id: 'north-hills',
+    name: 'North Hills',
+    description: 'Spacious homes surrounded by quieter streets and green spaces.',
+    image: unsplash('photo-1600607688969-a5bfcd646154'),
+    marker: { x: 38, y: 18, labelSide: 'right' },
+  }),
+  location({
+    id: 'west-end',
+    name: 'West End',
+    description: 'A refined neighborhood combining character, convenience and modern residences.',
+    image: unsplash('photo-1464082354059-27db6ce50048'),
+    marker: { x: 18, y: 58, labelSide: 'right' },
+  }),
+  location({
+    id: 'residences-district',
+    name: 'The Residences District',
+    description: 'New developments designed around contemporary urban living.',
+    image: unsplash('photo-1515263487990-61b07816b324'),
+    marker: { x: 76, y: 32, labelSide: 'left' },
+  }),
 ];
 
 export function getLocationById(id: string) {
-  return locations.find((location) => location.id === id);
+  return locations.find((entry) => entry.id === id);
 }

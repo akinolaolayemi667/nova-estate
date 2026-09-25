@@ -3,7 +3,7 @@ import type { PriceRangeOption, SelectOption } from '@/lib/types';
 export const quickLocations = [
   'City Center',
   'Waterfront',
-  'North District',
+  'North Hills',
   'West End',
   'New Developments',
 ] as const;

@@ -1,4 +1,4 @@
-import { FeaturedProperties, Hero, PropertyCategories } from '@/components/sections';
+import { FeaturedProperties, Hero, Locations, PropertyCategories } from '@/components/sections';
 
 export function HomePage() {
   return (
@@ -6,6 +6,7 @@ export function HomePage() {
       <Hero />
       <FeaturedProperties />
       <PropertyCategories />
+      <Locations />
     </>
   );
 }
