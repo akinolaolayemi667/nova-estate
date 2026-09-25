@@ -1,6 +1,5 @@
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion, useReducedMotion, type Variants } from 'framer-motion';
 import type { ReactNode } from 'react';
-import { cn } from '@/lib/cn';
 import { defaultViewport, imageRevealContent, imageRevealFrame } from '@/lib/motion';
 
 export interface ImageRevealProps {
@@ -30,17 +29,15 @@ export function ImageReveal({ children, delay = 0, className }: ImageRevealProps
     );
   }
 
+  const trigger: Variants = { hidden: {}, visible: { transition: { delayChildren: delay } } };
+
+  // The viewport trigger must sit outside the clipped frame: a fully clipped element never intersects.
   return (
-    <motion.div
-      className={cn('overflow-hidden', className)}
-      variants={imageRevealFrame}
-      initial="hidden"
-      whileInView="visible"
-      viewport={defaultViewport}
-      transition={delay ? { delay } : undefined}
-    >
-      <motion.div variants={imageRevealContent} className="size-full">
-        {children}
+    <motion.div className={className} variants={trigger} initial="hidden" whileInView="visible" viewport={defaultViewport}>
+      <motion.div variants={imageRevealFrame} className="size-full overflow-hidden">
+        <motion.div variants={imageRevealContent} className="size-full">
+          {children}
+        </motion.div>
       </motion.div>
     </motion.div>
   );

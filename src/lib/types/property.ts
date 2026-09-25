@@ -30,6 +30,13 @@ export interface PropertyImage {
   alt: string;
 }
 
+/** A named view in a property gallery, e.g. "Kitchen". */
+export interface GalleryImage extends PropertyImage {
+  label: string;
+  /** Tailwind `object-[x_y]` crop for the main stage. */
+  position?: string;
+}
+
 /** Listing summary — everything a card, search result or map pin needs. */
 export interface Property {
   id: string;
