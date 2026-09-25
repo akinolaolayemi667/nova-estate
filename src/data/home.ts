@@ -1,3 +1,4 @@
+import { Compass, MapPin, Sparkles, UserRound, type LucideIcon } from 'lucide-react';
 import { unsplash } from '@/lib/images';
 import { routes } from '@/lib/routes';
 import type { GalleryImage, Property } from '@/lib/types';
@@ -105,3 +106,42 @@ export const propertyShowcaseContent = {
   cta: { label: 'View Full Property', href: routes.property(theGlassHouse.slug) },
   disclaimer: 'Illustrative demo residence, presented for demonstration only. Not a real property for sale.',
 } as const;
+
+export interface Principle {
+  title: string;
+  description: string;
+  icon: LucideIcon;
+}
+
+export const whyNovaContent = {
+  eyebrow: 'Why NOVA Estates',
+  title: ['A More Considered', 'Approach to Property'],
+  description:
+    'We combine thoughtful property selection, local market knowledge and a client-first approach to make the search for a new home feel more intentional.',
+  image: {
+    src: unsplash('photo-1600210492493-0946911123ea', 2000),
+    alt: 'Living room beneath a timber ceiling, with a leather sofa and full-height corner glazing opening onto trees',
+  },
+  principles: [
+    {
+      title: 'Curated Selection',
+      description: 'We focus on properties with distinctive architecture, strong locations and meaningful potential.',
+      icon: Sparkles,
+    },
+    {
+      title: 'Personal Guidance',
+      description: 'From the first viewing to the final decision, we keep the process clear and personal.',
+      icon: UserRound,
+    },
+    {
+      title: 'Local Perspective',
+      description: 'Understand the character, lifestyle and practical details behind each location.',
+      icon: MapPin,
+    },
+    {
+      title: 'Long-Term Thinking',
+      description: 'We help clients consider not only the property today, but how it fits their plans over time.',
+      icon: Compass,
+    },
+  ] satisfies Principle[],
+};
