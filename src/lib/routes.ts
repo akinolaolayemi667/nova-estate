@@ -19,4 +19,5 @@ export const routes = {
   favorites: path('/favorites'),
   consultation: path('/consultation'),
   contact: path('/contact'),
+  designSystem: path('/design-system'),
 } as const;
