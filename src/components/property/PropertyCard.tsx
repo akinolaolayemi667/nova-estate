@@ -16,6 +16,9 @@ export interface PropertyCardProps {
   layout?: PropertyCardLayout;
   /** Override the image crop, e.g. `portrait` for an occasional editorial card. */
   imageRatio?: ImageRatio;
+  /** Extra classes for the image frame — pair with `imageRatio="none"` for responsive crops. */
+  imageClassName?: string;
+  imageSizes?: string;
   /** Defaults to the property's detail route. */
   href?: string;
   headingLevel?: HeadingLevel;
@@ -28,6 +31,8 @@ export function PropertyCard({
   property,
   layout = 'stacked',
   imageRatio,
+  imageClassName,
+  imageSizes,
   href = routes.property(property.slug),
   headingLevel = 3,
   showFavorite = true,
@@ -51,8 +56,8 @@ export function PropertyCard({
         ratio={imageRatio ?? (isHorizontal ? 'landscape' : 'classic')}
         zoomOnHover
         priority={priority}
-        sizes={isHorizontal ? '(min-width: 768px) 60vw, 100vw' : undefined}
-        className={cn(isHorizontal && 'md:col-span-7')}
+        sizes={imageSizes ?? (isHorizontal ? '(min-width: 768px) 60vw, 100vw' : undefined)}
+        className={cn(isHorizontal && 'md:col-span-7', imageClassName)}
       >
         <div className="absolute inset-x-0 top-0 z-10 flex items-start justify-between gap-3 p-4 md:p-5">
           {property.status ? <PropertyStatusBadge status={property.status} /> : <span />}
@@ -83,7 +88,7 @@ export function PropertyCard({
 
         <PropertyPrice property={property} size={isHorizontal ? 'lg' : 'md'} className="mt-5" />
 
-        <div className="mt-5 flex flex-wrap items-center justify-between gap-x-6 gap-y-4 border-t border-line pt-4">
+        <div className="mt-5 flex flex-wrap items-center justify-between gap-x-6 gap-y-4 border-t border-line pt-4 transition-colors duration-500 group-hover:border-navy/35">
           <PropertySpecs property={property} />
           <span aria-hidden="true" className="nav-label flex items-center gap-2 text-navy">
             View Property

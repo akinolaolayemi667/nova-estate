@@ -1,5 +1,10 @@
-import { Hero } from '@/components/sections';
+import { FeaturedProperties, Hero } from '@/components/sections';
 
 export function HomePage() {
-  return <Hero />;
+  return (
+    <>
+      <Hero />
+      <FeaturedProperties />
+    </>
+  );
 }

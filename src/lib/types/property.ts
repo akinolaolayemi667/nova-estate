@@ -1,4 +1,5 @@
 export const PROPERTY_TYPES = [
+  'house',
   'villa',
   'penthouse',
   'apartment',
@@ -9,7 +10,16 @@ export const PROPERTY_TYPES = [
 
 export type PropertyType = (typeof PROPERTY_TYPES)[number];
 
-export const PROPERTY_STATUSES = ['for-sale', 'for-rent', 'reserved', 'sold', 'off-market'] as const;
+export const PROPERTY_STATUSES = [
+  'featured',
+  'new-listing',
+  'private-sale',
+  'for-sale',
+  'for-rent',
+  'reserved',
+  'sold',
+  'off-market',
+] as const;
 
 export type PropertyStatus = (typeof PROPERTY_STATUSES)[number];
 
@@ -37,6 +47,8 @@ export interface Property {
   area: number;
   image: string;
   imageAlt: string;
+  /** One or two sentences for larger editorial cards. */
+  summary?: string;
   featured?: boolean;
   status?: PropertyStatus;
   agentId?: string;

@@ -33,6 +33,7 @@ export function pluralize(count: number, singular: string, plural = `${singular}
 }
 
 export const propertyTypeLabels: Record<PropertyType, string> = {
+  house: 'House',
   villa: 'Villa',
   penthouse: 'Penthouse',
   apartment: 'Apartment',
@@ -42,6 +43,9 @@ export const propertyTypeLabels: Record<PropertyType, string> = {
 };
 
 export const propertyStatusLabels: Record<PropertyStatus, string> = {
+  featured: 'Featured',
+  'new-listing': 'New Listing',
+  'private-sale': 'Private Sale',
   'for-sale': 'For Sale',
   'for-rent': 'For Rent',
   reserved: 'Reserved',

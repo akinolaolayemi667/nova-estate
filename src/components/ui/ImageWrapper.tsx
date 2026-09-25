@@ -11,7 +11,9 @@ export type ImageRatio =
   | 'wide'
   | 'panorama'
   | 'square'
-  | 'fill';
+  | 'fill'
+  /** No aspect class — supply responsive `aspect-*` utilities via `className`. */
+  | 'none';
 export type ImageOverlay = 'none' | 'scrim' | 'bottom';
 
 export interface ImageWrapperProps
@@ -40,6 +42,7 @@ const ratioClasses: Record<ImageRatio, string> = {
   panorama: 'aspect-[21/9]',
   square: 'aspect-square',
   fill: 'size-full',
+  none: '',
 };
 
 const overlayClasses: Record<Exclude<ImageOverlay, 'none'>, string> = {
