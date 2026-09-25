@@ -3,7 +3,15 @@ import placeholderImage from '@/assets/images/placeholder-property.svg';
 import { cn } from '@/lib/cn';
 import { unsplashSrcSet } from '@/lib/images';
 
-export type ImageRatio = 'portrait' | 'tall' | 'landscape' | 'wide' | 'square' | 'panorama' | 'auto';
+export type ImageRatio =
+  | 'portrait'
+  | 'tall'
+  | 'classic'
+  | 'landscape'
+  | 'wide'
+  | 'panorama'
+  | 'square'
+  | 'fill';
 export type ImageOverlay = 'none' | 'scrim' | 'bottom';
 
 export interface ImageWrapperProps
@@ -26,16 +34,17 @@ export interface ImageWrapperProps
 const ratioClasses: Record<ImageRatio, string> = {
   portrait: 'aspect-[4/5]',
   tall: 'aspect-[3/4]',
+  classic: 'aspect-[4/3]',
   landscape: 'aspect-[3/2]',
   wide: 'aspect-video',
-  square: 'aspect-square',
   panorama: 'aspect-[21/9]',
-  auto: '',
+  square: 'aspect-square',
+  fill: 'size-full',
 };
 
 const overlayClasses: Record<Exclude<ImageOverlay, 'none'>, string> = {
-  scrim: 'bg-ink/30',
-  bottom: 'bg-linear-to-t from-ink/65 via-ink/10 to-transparent',
+  scrim: 'bg-navy/30',
+  bottom: 'bg-linear-to-t from-navy/60 via-navy/10 to-transparent',
 };
 
 export function ImageWrapper({
@@ -64,7 +73,7 @@ export function ImageWrapper({
   const resolvedSrcSet = failed ? undefined : (srcSet ?? unsplashSrcSet(src));
 
   const frame = (
-    <div className={cn('group relative overflow-hidden bg-linen', ratioClasses[ratio], className)}>
+    <div className={cn('group relative overflow-hidden bg-line/60', ratioClasses[ratio], className)}>
       <img
         src={resolvedSrc}
         srcSet={resolvedSrcSet}
@@ -83,9 +92,9 @@ export function ImageWrapper({
         }}
         className={cn(
           'size-full object-cover',
-          'motion-safe:transition-[opacity,transform] motion-safe:duration-[1200ms] motion-safe:ease-architectural',
+          'motion-safe:transition-[opacity,scale] motion-safe:duration-[1400ms] motion-safe:ease-architectural',
           loaded ? 'opacity-100' : 'opacity-0',
-          zoomOnHover && 'motion-safe:group-hover:scale-[1.04]',
+          zoomOnHover && 'motion-safe:group-hover:scale-[1.035]',
           imageClassName,
         )}
         {...imgProps}
@@ -102,7 +111,7 @@ export function ImageWrapper({
   return (
     <figure>
       {frame}
-      <figcaption className="mt-3 text-sm text-taupe">{caption}</figcaption>
+      <figcaption className="mt-3 text-caption text-muted">{caption}</figcaption>
     </figure>
   );
 }

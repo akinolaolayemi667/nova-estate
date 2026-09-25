@@ -2,54 +2,59 @@
 
 /*
  * NOVA Estates design tokens.
- * Warm limestone surfaces, graphite ink, a single bronze accent.
- * Sharp geometry and hairline rules — no gradients, no heavy radii.
+ * Cream, off-white and deep navy carry the interface; muted gold is an accent only.
+ * Thin rules, minimal radii, no heavy gradients.
  */
 @theme {
-  /* Surfaces */
-  --color-paper: #f3efe8;
-  --color-linen: #ebe5da;
-  --color-sand: #dcd3c4;
-  --color-stone: #c4b8a5;
-  --color-taupe: #8a8174;
-  --color-umber: #5f584e;
+  --color-*: initial;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --color-white: #ffffff;
+  --color-black: #000000;
 
-  /* Ink */
-  --color-ink: #1b1a17;
-  --color-graphite: #2b2925;
-  --color-slate: #45413a;
+  /* Brand */
+  --color-navy: #0b1b2b;
+  --color-navy-soft: #10283d;
+  --color-cream: #f5f0e8;
+  --color-ivory: #fcfbf8;
+  --color-gold: #b89b5e;
+  --color-gold-light: #d8c49a;
 
-  /* Accent */
-  --color-bronze: #9a7a4f;
-  --color-bronze-light: #b08d5b;
-  --color-bronze-deep: #7a5f3b;
-
-  /* Status */
-  --color-sage: #66705e;
-  --color-clay: #9b5b43;
+  /* Text & lines */
+  --color-ink: #17202a;
+  --color-muted: #68717a;
+  --color-line: #ddd8ce;
 
   /* Typography */
-  --font-display: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
-  --font-sans: 'Manrope', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Cormorant Garamond', 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
 
-  --text-display-xl: clamp(3.5rem, 8vw, 8.5rem);
-  --text-display-xl--line-height: 0.92;
-  --text-display-xl--letter-spacing: -0.02em;
-  --text-display-lg: clamp(2.75rem, 5.5vw, 5.5rem);
-  --text-display-lg--line-height: 1;
-  --text-display-lg--letter-spacing: -0.015em;
-  --text-display-md: clamp(2.125rem, 3.8vw, 3.75rem);
-  --text-display-md--line-height: 1.05;
-  --text-display-md--letter-spacing: -0.01em;
-  --text-display-sm: clamp(1.625rem, 2.4vw, 2.375rem);
-  --text-display-sm--line-height: 1.12;
-  --text-display-xs: clamp(1.375rem, 1.6vw, 1.625rem);
-  --text-display-xs--line-height: 1.2;
-  --text-eyebrow: 0.6875rem;
-  --text-eyebrow--line-height: 1.4;
+  --text-display: clamp(3.25rem, 7.5vw, 7.5rem);
+  --text-display--line-height: 0.95;
+  --text-display--letter-spacing: -0.02em;
+  --text-h1: clamp(2.5rem, 5vw, 4.75rem);
+  --text-h1--line-height: 1.02;
+  --text-h1--letter-spacing: -0.015em;
+  --text-h2: clamp(2rem, 3.6vw, 3.5rem);
+  --text-h2--line-height: 1.08;
+  --text-h2--letter-spacing: -0.01em;
+  --text-h3: clamp(1.5rem, 2.2vw, 2rem);
+  --text-h3--line-height: 1.15;
+  --text-h4: 1.5rem;
+  --text-h4--line-height: 1.2;
+  --text-body-lg: 1.1875rem;
+  --text-body-lg--line-height: 1.65;
+  --text-body: 1rem;
+  --text-body--line-height: 1.7;
+  --text-small: 0.875rem;
+  --text-small--line-height: 1.6;
+  --text-caption: 0.75rem;
+  --text-caption--line-height: 1.5;
+  --text-overline: 0.6875rem;
+  --text-overline--line-height: 1.4;
 
-  --tracking-eyebrow: 0.28em;
-  --tracking-label: 0.16em;
+  --tracking-overline: 0.22em;
+  --tracking-nav: 0.16em;
 
   /* Motion */
   --ease-architectural: cubic-bezier(0.22, 1, 0.36, 1);
@@ -75,8 +80,8 @@
   }
 
   body {
-    @apply bg-paper font-sans text-ink antialiased;
-    font-feature-settings: 'ss01', 'kern';
+    @apply bg-cream font-sans text-body text-ink antialiased;
+    font-feature-settings: 'cv11', 'ss01';
   }
 
   h1,
@@ -91,11 +96,15 @@
   }
 
   ::selection {
-    @apply bg-bronze text-paper;
+    @apply bg-navy text-ivory;
   }
 
   :focus-visible {
-    @apply outline outline-1 outline-offset-4 outline-bronze;
+    @apply outline-2 outline-offset-4 outline-navy;
+  }
+
+  [data-tone='navy'] :focus-visible {
+    @apply outline-gold-light;
   }
 
   img {
@@ -103,12 +112,14 @@
   }
 }
 
-@utility eyebrow {
-  @apply font-sans text-eyebrow font-medium tracking-eyebrow uppercase;
+/* Small uppercase label used for eyebrows, badges and meta rows. */
+@utility kicker {
+  @apply font-sans text-overline font-medium tracking-overline uppercase;
 }
 
-@utility label {
-  @apply font-sans text-xs font-medium tracking-label uppercase;
+/* Navigation and button label. */
+@utility nav-label {
+  @apply font-sans text-caption font-medium tracking-nav uppercase;
 }
 
 @utility tabular {

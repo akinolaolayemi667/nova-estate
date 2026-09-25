@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { Eyebrow, Heading, type HeadingLevel, type HeadingSize } from '@/components/ui';
+import { Eyebrow, Heading, Text, type HeadingLevel, type HeadingSize } from '@/components/ui';
 import { cn } from '@/lib/cn';
 
 export interface SectionHeadingProps {
@@ -9,7 +9,8 @@ export interface SectionHeadingProps {
   description?: ReactNode;
   /** Right-hand slot for a link or control, aligned to the title baseline. */
   action?: ReactNode;
-  align?: 'start' | 'center';
+  /** `split` places the title left and the description in a right column — the default editorial layout. */
+  align?: 'start' | 'split' | 'center';
   level?: HeadingLevel;
   size?: HeadingSize;
   inverse?: boolean;
@@ -29,11 +30,40 @@ export function SectionHeading({
   action,
   align = 'start',
   level = 2,
-  size = 'md',
+  size = 'h2',
   inverse = false,
   id,
   className,
 }: SectionHeadingProps) {
+  const lede = description && (
+    <Text variant="body-lg" tone={inverse ? 'inverse-muted' : 'muted'} className="max-w-xl">
+      {description}
+    </Text>
+  );
+
+  const eyebrowNode = eyebrow && (
+    <Eyebrow index={index} tone={inverse ? 'inverse' : 'default'}>
+      {eyebrow}
+    </Eyebrow>
+  );
+
+  if (align === 'split') {
+    return (
+      <header className={cn('grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-16', className)}>
+        <div className="flex flex-col gap-6 lg:col-span-7">
+          {eyebrowNode}
+          <Heading id={id} level={level} size={size}>
+            {title}
+          </Heading>
+        </div>
+        <div className="flex flex-col items-start gap-6 lg:col-span-5 lg:pb-2">
+          {lede}
+          {action}
+        </div>
+      </header>
+    );
+  }
+
   const centered = align === 'center';
 
   return (
@@ -44,20 +74,12 @@ export function SectionHeading({
         className,
       )}
     >
-      <div className={cn('flex max-w-3xl flex-col gap-5', centered && 'items-center')}>
-        {eyebrow && (
-          <Eyebrow index={index} tone={inverse ? 'inverse' : 'bronze'}>
-            {eyebrow}
-          </Eyebrow>
-        )}
+      <div className={cn('flex max-w-3xl flex-col gap-6', centered && 'items-center')}>
+        {eyebrowNode}
         <Heading id={id} level={level} size={size}>
           {title}
         </Heading>
-        {description && (
-          <p className={cn('max-w-xl text-base leading-relaxed md:text-lg', inverse ? 'text-paper/70' : 'text-slate')}>
-            {description}
-          </p>
-        )}
+        {lede}
       </div>
       {action && <div className="shrink-0">{action}</div>}
     </header>

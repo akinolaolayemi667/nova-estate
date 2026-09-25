@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
-  <rect width="800" height="600" fill="#ebe5da"/>
-  <g fill="none" stroke="#c4b8a5" stroke-width="2">
+  <rect width="800" height="600" fill="#f5f0e8"/>
+  <g fill="none" stroke="#ddd8ce" stroke-width="2">
     <path d="M280 380V260l120-80 120 80v120z"/>
     <path d="M370 380v-70h60v70"/>
     <path d="M240 380h320"/>

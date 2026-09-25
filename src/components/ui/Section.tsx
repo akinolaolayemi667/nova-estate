@@ -3,7 +3,7 @@ import { cn } from '@/lib/cn';
 import { Container, type ContainerSize } from './Container';
 
 export type SectionSpacing = 'none' | 'sm' | 'md' | 'lg';
-export type SectionTone = 'paper' | 'linen' | 'ink';
+export type SectionTone = 'cream' | 'ivory' | 'navy';
 
 export interface SectionProps extends HTMLAttributes<HTMLElement> {
   as?: 'section' | 'div' | 'article' | 'aside';
@@ -11,7 +11,7 @@ export interface SectionProps extends HTMLAttributes<HTMLElement> {
   tone?: SectionTone;
   /** Wraps children in a `Container` of this size. Pass `false` for full-bleed content. */
   container?: ContainerSize | false;
-  /** Draws a hairline rule along the top edge. */
+  /** Draws a thin rule along the top edge. */
   ruled?: boolean;
   containerClassName?: string;
 }
@@ -19,20 +19,20 @@ export interface SectionProps extends HTMLAttributes<HTMLElement> {
 const spacingClasses: Record<SectionSpacing, string> = {
   none: '',
   sm: 'py-16 md:py-20',
-  md: 'py-20 md:py-28 lg:py-32',
-  lg: 'py-24 md:py-36 lg:py-44',
+  md: 'py-20 md:py-28 lg:py-36',
+  lg: 'py-24 md:py-36 lg:py-48',
 };
 
 const toneClasses: Record<SectionTone, string> = {
-  paper: 'bg-paper text-ink',
-  linen: 'bg-linen text-ink',
-  ink: 'bg-ink text-paper',
+  cream: 'bg-cream text-ink',
+  ivory: 'bg-ivory text-ink',
+  navy: 'bg-navy text-ivory',
 };
 
 export function Section({
   as: Tag = 'section',
   spacing = 'md',
-  tone = 'paper',
+  tone = 'cream',
   container = 'content',
   ruled = false,
   className,
@@ -47,7 +47,7 @@ export function Section({
         'relative',
         spacingClasses[spacing],
         toneClasses[tone],
-        ruled && (tone === 'ink' ? 'border-t border-paper/15' : 'border-t border-ink/15'),
+        ruled && (tone === 'navy' ? 'border-t border-ivory/10' : 'border-t border-line'),
         className,
       )}
       {...props}

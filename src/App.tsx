@@ -1,11 +1,11 @@
 import { MotionConfig } from 'framer-motion';
-import { RootLayout } from '@/components/layout';
+import { RootLayout, SiteHeader } from '@/components/layout';
 import { FoundationPage } from '@/pages/FoundationPage';
 
 export function App() {
   return (
     <MotionConfig reducedMotion="user">
-      <RootLayout>
+      <RootLayout header={<SiteHeader />}>
         <FoundationPage />
       </RootLayout>
     </MotionConfig>

@@ -1,12 +1,12 @@
-import type { ButtonHTMLAttributes } from 'react';
+import type { ComponentPropsWithRef } from 'react';
 import type { LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/cn';
 
-export type IconButtonVariant = 'outline' | 'solid' | 'ghost' | 'overlay';
+export type IconButtonVariant = 'outline' | 'solid' | 'ghost' | 'overlay' | 'inverse';
 export type IconButtonSize = 'sm' | 'md' | 'lg';
 
 export interface IconButtonProps
-  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children' | 'aria-label' | 'aria-pressed'> {
+  extends Omit<ComponentPropsWithRef<'button'>, 'children' | 'aria-label' | 'aria-pressed'> {
   icon: LucideIcon;
   /** Accessible name — required because the button has no visible text. */
   label: string;
@@ -18,16 +18,17 @@ export interface IconButtonProps
 }
 
 const variantClasses: Record<IconButtonVariant, string> = {
-  outline: 'border border-ink/20 text-ink hover:border-ink hover:bg-ink hover:text-paper',
-  solid: 'bg-ink text-paper hover:bg-graphite',
-  ghost: 'text-ink hover:bg-ink/5',
-  overlay: 'bg-paper/85 text-ink backdrop-blur-sm hover:bg-paper',
+  outline: 'border border-line text-navy hover:border-navy',
+  solid: 'bg-navy text-ivory hover:bg-navy-soft',
+  ghost: 'text-navy hover:bg-navy/5',
+  overlay: 'bg-ivory/90 text-navy backdrop-blur-sm hover:bg-ivory',
+  inverse: 'border border-ivory/25 text-ivory hover:border-ivory',
 };
 
 const sizeClasses: Record<IconButtonSize, { button: string; icon: string }> = {
-  sm: { button: 'size-9', icon: 'size-4' },
+  sm: { button: 'size-10', icon: 'size-4' },
   md: { button: 'size-11', icon: 'size-[1.125rem]' },
-  lg: { button: 'size-14', icon: 'size-5' },
+  lg: { button: 'size-12', icon: 'size-5' },
 };
 
 export function IconButton({
@@ -48,7 +49,7 @@ export function IconButton({
       aria-pressed={pressed}
       title={label}
       className={cn(
-        'inline-flex shrink-0 items-center justify-center transition-colors duration-300 ease-architectural',
+        'inline-flex shrink-0 items-center justify-center rounded-xs transition-colors duration-300 ease-architectural',
         'disabled:pointer-events-none disabled:opacity-40',
         variantClasses[variant],
         sizeClasses[size].button,

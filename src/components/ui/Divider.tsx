@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { cn } from '@/lib/cn';
 
-export type DividerTone = 'subtle' | 'strong' | 'bronze' | 'inverse';
+export type DividerTone = 'line' | 'navy' | 'gold' | 'inverse';
 
 export interface DividerProps {
   orientation?: 'horizontal' | 'vertical';
@@ -14,15 +14,15 @@ export interface DividerProps {
 }
 
 const toneClasses: Record<DividerTone, string> = {
-  subtle: 'bg-ink/15',
-  strong: 'bg-ink',
-  bronze: 'bg-bronze',
-  inverse: 'bg-paper/20',
+  line: 'bg-line',
+  navy: 'bg-navy',
+  gold: 'bg-gold',
+  inverse: 'bg-ivory/15',
 };
 
 export function Divider({
   orientation = 'horizontal',
-  tone = 'subtle',
+  tone = 'line',
   label,
   decorative = false,
   className,
@@ -39,7 +39,7 @@ export function Divider({
     return (
       <div {...a11y} className={cn('flex items-center gap-5', className)}>
         <span className={cn('h-px flex-1', toneClasses[tone])} />
-        <span className="eyebrow shrink-0 text-taupe">{label}</span>
+        <span className="kicker shrink-0 opacity-70">{label}</span>
         <span className={cn('h-px flex-1', toneClasses[tone])} />
       </div>
     );

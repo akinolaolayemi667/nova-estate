@@ -1,23 +1,23 @@
-import { motion, type Variants } from 'framer-motion';
+import { motion } from 'framer-motion';
 import type { ReactNode } from 'react';
-import { defaultViewport, fadeUp } from '@/lib/motion';
+import { defaultViewport, revealVariants, type RevealVariant } from '@/lib/motion';
 
 export interface RevealProps {
   children: ReactNode;
-  variants?: Variants;
+  variant?: RevealVariant;
   delay?: number;
-  as?: 'div' | 'section' | 'li' | 'article' | 'header';
+  as?: 'div' | 'section' | 'li' | 'article' | 'header' | 'figure';
   className?: string;
 }
 
-/** Fades content upward once, when it scrolls into view. */
-export function Reveal({ children, variants = fadeUp, delay = 0, as = 'div', className }: RevealProps) {
+/** Animates content once as it scrolls into view: fade, fade-up or subtle scale. */
+export function Reveal({ children, variant = 'fade-up', delay = 0, as = 'div', className }: RevealProps) {
   const MotionTag = motion[as];
 
   return (
     <MotionTag
       className={className}
-      variants={variants}
+      variants={revealVariants[variant]}
       initial="hidden"
       whileInView="visible"
       viewport={defaultViewport}

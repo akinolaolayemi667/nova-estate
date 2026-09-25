@@ -2,7 +2,7 @@ import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'reac
 import type { LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/cn';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'accent' | 'inverse' | 'link';
+export type ButtonVariant = 'primary' | 'secondary' | 'gold' | 'inverse' | 'inverse-outline' | 'link';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
 interface ButtonBaseProps {
@@ -23,14 +23,15 @@ export type ButtonProps =
   | (ButtonBaseProps & NativeAnchorProps & { href: string });
 
 const variantClasses: Record<ButtonVariant, string> = {
-  primary: 'bg-ink text-paper hover:bg-graphite',
-  secondary: 'border border-ink/80 text-ink hover:bg-ink hover:text-paper',
-  accent: 'bg-bronze text-paper hover:bg-bronze-deep',
-  inverse: 'border border-paper/40 text-paper hover:border-paper hover:bg-paper hover:text-ink',
+  primary: 'bg-navy text-ivory hover:bg-navy-soft motion-safe:hover:-translate-y-0.5',
+  secondary: 'border border-navy text-navy hover:bg-navy hover:text-ivory',
+  gold: 'bg-gold text-navy hover:bg-gold-light motion-safe:hover:-translate-y-0.5',
+  inverse: 'bg-ivory text-navy hover:bg-cream motion-safe:hover:-translate-y-0.5',
+  'inverse-outline': 'border border-ivory/40 text-ivory hover:border-ivory hover:bg-ivory hover:text-navy',
   link: [
-    'relative text-ink',
-    'after:absolute after:inset-x-0 after:-bottom-1.5 after:h-px after:origin-left after:bg-current',
-    'after:transition-transform after:duration-500 after:ease-architectural hover:after:scale-x-50',
+    'relative',
+    'after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:origin-left after:bg-current',
+    'after:scale-x-0 after:transition-transform after:duration-700 after:ease-architectural hover:after:scale-x-100',
   ].join(' '),
 };
 
@@ -47,7 +48,7 @@ interface ButtonClassOptions {
   className?: string;
 }
 
-/** Exposed so router links (Phase 2) can share button styling. */
+/** Exposed so router links can share button styling. */
 export function buttonClasses({
   variant = 'primary',
   size = 'md',
@@ -55,9 +56,10 @@ export function buttonClasses({
   className,
 }: ButtonClassOptions = {}) {
   return cn(
-    'group/button label inline-flex shrink-0 items-center justify-center gap-3 whitespace-nowrap',
-    'transition-colors duration-500 ease-architectural',
+    'group/button nav-label inline-flex shrink-0 items-center justify-center gap-3 whitespace-nowrap',
+    'transition-[background-color,color,border-color,translate] duration-500 ease-architectural',
     'disabled:pointer-events-none disabled:opacity-40 aria-disabled:pointer-events-none aria-disabled:opacity-40',
+    variant !== 'link' && 'rounded-xs',
     variantClasses[variant],
     variant !== 'link' && sizeClasses[size],
     fullWidth && 'w-full',

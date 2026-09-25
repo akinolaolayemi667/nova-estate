@@ -1,13 +1,19 @@
 import { useEffect } from 'react';
 
-/** Prevents background scrolling while overlays (menus, galleries, dialogs) are open. */
+/** Prevents background scrolling while overlays are open, without layout shift from the scrollbar. */
 export function useLockBodyScroll(locked: boolean) {
   useEffect(() => {
     if (!locked) return;
-    const { overflow } = document.body.style;
-    document.body.style.overflow = 'hidden';
+    const { body, documentElement } = document;
+    const { overflow, paddingRight } = body.style;
+    const scrollbarWidth = window.innerWidth - documentElement.clientWidth;
+
+    body.style.overflow = 'hidden';
+    if (scrollbarWidth > 0) body.style.paddingRight = `${scrollbarWidth}px`;
+
     return () => {
-      document.body.style.overflow = overflow;
+      body.style.overflow = overflow;
+      body.style.paddingRight = paddingRight;
     };
   }, [locked]);
 }

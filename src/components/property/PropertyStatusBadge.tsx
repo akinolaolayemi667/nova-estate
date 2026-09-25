@@ -5,9 +5,9 @@ import type { PropertyStatus } from '@/lib/types';
 const statusVariants: Record<PropertyStatus, BadgeVariant> = {
   'for-sale': 'overlay',
   'for-rent': 'overlay',
-  reserved: 'bronze',
-  sold: 'ink',
-  'off-market': 'sage',
+  reserved: 'gold',
+  sold: 'navy',
+  'off-market': 'navy',
 };
 
 export interface PropertyStatusBadgeProps {
@@ -17,7 +17,7 @@ export interface PropertyStatusBadgeProps {
 
 export function PropertyStatusBadge({ status, className }: PropertyStatusBadgeProps) {
   return (
-    <Badge variant={statusVariants[status]} className={className}>
+    <Badge variant={statusVariants[status]} dot={status === 'for-sale'} className={className}>
       {propertyStatusLabels[status]}
     </Badge>
   );

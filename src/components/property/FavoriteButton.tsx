@@ -23,7 +23,7 @@ export function FavoriteButton({ propertyId, propertyTitle, variant = 'overlay',
       size="sm"
       onClick={() => toggleFavorite(propertyId)}
       className={className}
-      iconClassName={cn('transition-colors duration-300', saved && 'fill-bronze text-bronze')}
+      iconClassName={cn('transition-colors duration-300', saved && 'fill-navy')}
     />
   );
 }
