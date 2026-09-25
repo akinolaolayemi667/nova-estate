@@ -29,4 +29,11 @@ export const featuredPropertiesContent = {
     'Explore a selection of homes and spaces chosen for their architecture, location and character.',
   cta: { label: 'View All Properties', href: routes.properties },
   disclaimer: 'Listings shown are illustrative examples for demonstration purposes.',
+  note: {
+    eyebrow: 'The NOVA selection',
+    title: 'Fewer homes, chosen with care.',
+    body: 'We represent a small number of residences at a time, so each one is presented with the attention it deserves.',
+    countLabel: 'Residences',
+    cta: { label: 'Arrange a Viewing', href: routes.consultation },
+  },
 } as const;

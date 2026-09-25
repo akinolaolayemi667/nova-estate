@@ -1,5 +1,5 @@
 export { PropertyCard, type PropertyCardProps, type PropertyCardLayout } from './PropertyCard';
-export { FeaturedPropertyCard, type FeaturedPropertyCardProps } from './FeaturedPropertyCard';
+export { PropertyTile, type PropertyTileProps } from './PropertyTile';
 export { PropertySpecs, type PropertySpecsProps } from './PropertySpecs';
 export { PropertyPrice, type PropertyPriceProps } from './PropertyPrice';
 export { PropertyStatusBadge, type PropertyStatusBadgeProps } from './PropertyStatusBadge';
