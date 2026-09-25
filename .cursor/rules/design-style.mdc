@@ -1,0 +1,38 @@
+---
+description: NOVA Estates "modular editorial" design style — apply to every UI change
+alwaysApply: true
+---
+
+# Design style: Modular Editorial (quiet luxury)
+
+Editorial magazine layout on a Swiss 12-column grid, with restrained bento modules where a section lists several items. Calm, architectural, premium — never a SaaS or listing-portal look.
+
+## Palette (tokens in `src/styles/globals.css`)
+- Surfaces: `cream` (page), `ivory` (alternate sections, panels), `navy` / `navy-soft` (emphasis sections and editorial tiles only).
+- Text: `ink`, `muted`; on navy use `ivory` and `ivory/70`.
+- `gold` / `gold-light` only for thin rules, eyebrows, numerals, small icons. Never gold fills or gold buttons.
+- Borders: 1px `line` (or `ivory/20` on navy).
+
+## Typography
+- Headlines: `font-display` (Cormorant Garamond), light and large, via `Heading`; an italic accent line is allowed.
+- Body: Inter via `Text`. Labels: `kicker` / `nav-label` (small uppercase, wide tracking). No third typeface.
+- Sections open with `SectionHeading` (numbered eyebrow "01 — …", split layout, link action).
+
+## Layout
+- `Section` + container; generous whitespace (`py` via Section spacing). Alternate cream/ivory; navy sparingly.
+- Every section gets its own editorial composition (asymmetry, offsets, mixed spans). Never rows of identical small cards.
+- Bento modules (see `FeaturedProperties` + `PropertyTile`): 4–7 tiles, mixed spans, `grid-flow-dense`, rows `auto-rows-[minmax(20rem,auto)]`, gap 4–5, one large lead tile, at most one navy editorial tile, full-bleed photography with the navy scrim on the text block.
+- Sharp corners (`rounded-xs` max). No large radii, glassmorphism, glow, gradients as decoration, neon, icon grids or UI mockups.
+
+## Imagery & motion
+- Large architectural photography with natural light; tune crops with `object-[x_y]`. Use `ImageWrapper` (alt text required).
+- Motion via `Reveal` / `Stagger` / `ImageReveal`: slow fade-up and reveals, `ease-architectural`, 500–1400ms. No bounce or attention-seeking effects; respect reduced motion.
+- Hover: gentle image zoom, thin frame/border shift, underline growth, arrow nudge right, favorite button lifts.
+
+## Content
+- Honest copy: demo listings stay marked illustrative; statuses limited to Featured, New Listing, Private Sale (no SOLD, price drops, urgency).
+- CTAs: "View Property →", "View All Properties →" style — uppercase `nav-label` links or `Button`.
+
+## Implementation notes
+- `cn()` has no tailwind-merge: don't override a component's base class with a conflicting one; use breakpoint variants or a wrapper.
+- Verify 390 / 768 / 1024 / 1440px with no horizontal overflow, then build, push and deploy.
